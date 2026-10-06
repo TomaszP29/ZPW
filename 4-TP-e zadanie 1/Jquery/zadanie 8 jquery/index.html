@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Wprowadzenie jquery</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+
+        <script>
+            $(function(){
+                $("#zmien").click(function(){
+                    $("#tekst").text("Nowy tekst");
+                });
+
+                $("#przelacz").click(function(){
+                    $("#pudelko").toggle();
+                });
+
+                $(".akapit").click(function(){
+                    $(this).toggleClass("podswietlony");
+                });
+
+                $("#przywitaj").click(function(){
+                    if($("#imie").val().trim() !== ""){
+                        $("#wynik").text("Cześć " + $("#imie").val() + "!");
+                    }else{
+                        $("#wynik").text("Podaj imię");
+                    }
+                });
+
+                $("#akceptuje").change(function(){
+                    if(this.checked){
+                        $("#wyslij").removeAttr("disabled");
+                    }else{
+                        $("#wyslij").attr("disabled","disabled");
+                    }
+                });
+
+                $("li").each(function(index, element){
+                    $(element).text((index + 1) + "." + $(element).text());
+                });
+
+                $("#zaloguj").click(function(){
+                    if($("#login").val().length > 3 && $("#haslo").val().length > 6){
+                        $("#komunikat").text("Zalogowano").css("color","green");
+                    }else{
+                         $("#komunikat").text("Popraw").css("color","red");
+                    }
+                });
+            });
+        </script>
+            
+        <style>
+            .podswietlony{background-color: yellow;}
+        </style>
+    </head>
+    <body>
+        <p id="tekst">Stary tekst</p>
+        <button id="zmien">Zmień</button>
+        <br>
+        <div id="pudelko">Widzisz mnie</div>
+        <button id="przelacz">Pokaż/ukryj</button>
+        <br>
+        <p class="akapit">Kliknij mnie</p>
+        <br>
+        <input type="text" id="imie">
+        <button id="przywitaj">Przywitaj</button>
+        <p id="wynik"></p>
+        <br>
+        <label><input type="checkbox" id="akceptuje">Akceptuj</label>
+        <button id="wyslij" disabled>Wyślij</button>
+        <br>
+        <ul id="menu">
+            <li>Strona główna</li>
+            <li>O nas</li>
+            <li>Kontakt</li>
+        </ul>
+        <br>
+        <input type="text" id="login">
+        <input type="password" id="haslo">
+        <button id="zaloguj">Zaloguj</button>
+        <p id="komunikat"></p>
+    </body>
+</html>
