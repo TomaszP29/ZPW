@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>Wprowadzenie jquery</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+
+        <script>
+            $(function(){
+                $("#pokaz").click(function(){
+                    $("#tekst").toggle();
+                });
+
+                $("#pokaz").click(function(){
+                    $("#text").hide();
+                });
+
+                $("#pokaz").click(function(){
+                    $("#ukryty").show();
+                });
+
+                $("#gora").click(function(){
+                    $("#ruch").slideUp();
+                });
+
+                $("#dol").click(function(){
+                    $("#ruch").slideDown();
+                });
+
+                $("#plynny").click(function(){
+                    $("#slide").slideToggle();
+                });
+            });
+        </script>
+            
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <p id="ukryty" hidden>Byłem ukryty</p>
+        <button id="pokaz">Ukryj/pokaż</button>
+        <p id="tekst">Jestem</p>
+        <p id="text">Ukrywam się</p>
+        <br>
+        <button id="gora">Góra</button>
+        <button id="dol">Dół</button>
+        <p id="ruch">Siemka</p>
+        <br>
+        <button id="plynny">Płynne schowanie się</button>
+        <p id="slide">chowam się</p>
+    </body>
+</html>

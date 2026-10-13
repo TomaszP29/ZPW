@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Wprowadzenie jquery</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+
+        <script>
+            $(function(){
+                $("#tekst").keyup(function(e){
+                    let numberOfCharacters = $("#tekst").val().length;
+                    
+                    if(numberOfCharacters <= 10){
+                        $("#pozostalo").text("Pozostało znaków: " + (10 - numberOfCharacters));
+                        $("#pozostalo").removeClass("blad");
+                    }else{
+                        $("#pozostalo").text("Pozostało znaków: " + 0);
+                        $("#pozostalo").addClass("blad");
+                    }
+                    
+                    if(e.key == "Escape"){
+                        $("#pozostalo").text("Pozostało znaków: 10");
+                        $("#pozostalo").removeClass("blad");
+                        $(this).val("");
+                    }
+
+                    if(e.key == "Enter" && $(this).val() == "admin"){
+                        console.log("Dostęp przyznany");
+                    }
+                });
+            });
+        </script>
+            
+        <style>
+            .blad{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="text" id="tekst">
+        <p id="pozostalo">Pozostało znaków: 10</p>
+    </body>
+</html>
