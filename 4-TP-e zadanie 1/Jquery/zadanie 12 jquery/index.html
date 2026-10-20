@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Wprowadzenie jquery</title>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+
+        <script>
+            $(function(){
+                $("#newsletter").change(function(){
+                    if($(this).is(":checked")){
+                        $("#stan").text("Zapisano");
+                    }else{
+                        $("#stan").text("Wypisano");
+                    }
+                });
+
+                $("#akceptuje").change(function(){
+                    if($(this).is(":checked")){
+                        $("#rejestracja").prop("disabled", false);
+                    }else{
+                       $("#rejestracja").prop("disabled", true);
+                    }
+                });
+
+                $("#tekst").on("input",function(){
+                    $("#podglad").text($(this).val());
+                });
+
+                $("#area").on("input",function(){
+                    let liczba = 100 - $(this).val().length;
+                    $("#licznik").text(liczba);
+                    if(liczba < 10){
+                        $("#licznik").css("color","red");
+                    }else{
+                        $("#licznik").css("color","green");
+                    }
+                });
+            });
+        </script>
+            
+        <style>
+            
+        </style>
+    </head>
+    <body>
+        <input type="checkbox" id="newsletter"> Chcę newsletter
+        <p id="stan"></p>
+
+        <hr>
+
+        <input type="checkbox" id="akceptuje">Akceptuję regulamin
+        <button id="rejestracja" disabled>Zarejestruj</button>
+        <p id="stan"></p>
+
+        <hr>
+
+        <input type="text" id="tekst">
+        <p>Podgląd: <span id="podglad"></span></p>
+
+        <hr>
+
+        <textarea id="area" maxlength="100"></textarea>
+        <p>Pozostało znaków: <span id="licznik">100</span></p>
+    </body>
+</html>
